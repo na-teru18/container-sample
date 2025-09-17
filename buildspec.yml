@@ -13,8 +13,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t container-test-app .
-      - docker tag container-test-app:latest ${ECR_REPOSITORY}:latest
+      - docker build -t teruya-ecs-container .
+      - docker tag teruya-ecs-container:latest ${ECR_REPOSITORY}:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
@@ -24,7 +24,7 @@ phases:
       - |
         echo '[
           {
-            "name": "container-test-app",
+            "name": "teruya-ecs-container",
             "imageUri": "'${ECR_REPOSITORY}':latest"
           }
         ]' > imagedefinitions.json
